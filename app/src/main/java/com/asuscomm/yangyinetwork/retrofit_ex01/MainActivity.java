@@ -18,14 +18,45 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         init();
+
         //get("1");
         post("1","sungsik is pool?");
         //delete("1");
+
     }
 
-    private void init(){
+    private void init() {
         ddDefaultRestClient = new DefaultRestClient<>();
         mMessageService = ddDefaultRestClient.getClient(MessageService.class);
+    }
+
+//    private void get(String id) {
+//
+//        Call<Message> call = mMessageService.getMessage("1");
+//        call.enqueue(new Callback<Message>() {
+//            @Override
+//            public void onResponse(Call<Message> call, Response<Message> response) {
+//                if (response.isSuccessful()) {
+//                    Log.d("jyp", "success");
+//                    Message test = response.body();
+//                    Log.d("jyp", test.getMessage());
+//                } else {
+//                    Log.d("jyp", "fail");
+//                    Log.d("jyp", response.errorBody().toString());
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Message> call, Throwable t) {
+//                Log.d("jyp", "fail2");
+//                t.printStackTrace();
+//            }
+//        });
+//
+//        Log.d("jyp", "init");
+//    }
+  private void post(String id,String message) {
+
 
         Log.d("jyp","init");
     }
@@ -33,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
     Message mMessage;
     private void get(String id){
         Call<Message> call = mMessageService.getMessage(id);
+
         call.enqueue(new Callback<Message>() {
             @Override
             public void onResponse(Call<Message> call, Response<Message> response) {
@@ -103,5 +135,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Log.d("jyp","delete");
+
     }
 }

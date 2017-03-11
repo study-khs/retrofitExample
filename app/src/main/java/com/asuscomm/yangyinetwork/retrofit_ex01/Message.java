@@ -10,6 +10,7 @@ import java.io.Serializable;
 
 //@JsonIgnoreProperties(ignoreUnknown = true)
 public class Message implements Serializable {
+
     @SerializedName("message")
     private String message;
     @SerializedName("id")
