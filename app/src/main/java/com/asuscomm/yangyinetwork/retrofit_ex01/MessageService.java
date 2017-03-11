@@ -5,6 +5,7 @@ import java.util.List;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -34,12 +35,8 @@ public interface MessageService {
 //            @Part MultipartBody.Part file
 //    );
 
-    @FormUrlEncoded
     @POST("api/message")
-    Call<Message> postMessage(
-            @Field("id") String id,
-            @Field("message") String message
-    );
+    Call<Message> postMessage(@Body Message message);
 
 
     @DELETE("api/message/{message_id}")

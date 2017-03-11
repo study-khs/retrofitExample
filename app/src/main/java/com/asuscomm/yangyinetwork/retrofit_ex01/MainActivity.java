@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void post(String id, String message){
-        Call<Message> call = mMessageService.postMessage(id, message);
+        Call<Message> call = mMessageService.postMessage(new Message(id, message));
         call.enqueue(new Callback<Message>() {
             @Override
             public void onResponse(Call<Message> call, Response<Message> response) {
