@@ -5,6 +5,7 @@ import java.util.List;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.GET;
@@ -25,12 +26,7 @@ public interface MessageService {
 
     @POST("api/message")
     Call<Message> postMessage(
-            @Part("title") String title,
-            @Part("duration") String duration,
-            @Part("filename") String filename,
-            @Part("is_korean") Boolean isKorean,
-            @Part("description") RequestBody description,
-            @Part MultipartBody.Part file
+            @Body Message message
     );
 
     @DELETE("api/message/{message_id}")
