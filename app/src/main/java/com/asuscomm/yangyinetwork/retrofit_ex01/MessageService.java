@@ -8,6 +8,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Multipart;
@@ -24,10 +25,21 @@ public interface MessageService {
     @GET("api/message/{message_id}")
     Call<Message> getMessage(@Path("message_id") String id);
 
+//    @POST("api/message")
+//    Call<Message> postMessage(
+//            @Part("title") String title,
+//            @Part("duration") String duration,
+//            @Part("filename") String filename,
+//            @Part("is_korean") Boolean isKorean,
+//            @Part("description") RequestBody description,
+//            @Part MultipartBody.Part file
+//    );
+
     @POST("api/message")
-    Call<Message> postMessage(
-            @Body Message message
-    );
+
+    Call<Message> postMessage(@Body Message message);
+
+
 
     @DELETE("api/message/{message_id}")
     Call<Void> deleteRecord(@Path("message_id") String id);
