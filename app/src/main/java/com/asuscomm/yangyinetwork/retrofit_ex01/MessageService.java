@@ -25,21 +25,11 @@ public interface MessageService {
     @GET("api/message/{message_id}")
     Call<Message> getMessage(@Path("message_id") String id);
 
-//    @POST("api/message")
-//    Call<Message> postMessage(
-//            @Part("title") String title,
-//            @Part("duration") String duration,
-//            @Part("filename") String filename,
-//            @Part("is_korean") Boolean isKorean,
-//            @Part("description") RequestBody description,
-//            @Part MultipartBody.Part file
-//    );
+    @GET("api/message")
+    Call<Message> getMessagePageDto();
 
     @POST("api/message")
-
     Call<Message> postMessage(@Body Message message);
-
-
 
     @DELETE("api/message/{message_id}")
     Call<Void> deleteRecord(@Path("message_id") String id);

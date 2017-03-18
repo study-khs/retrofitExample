@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         init();
 
         //get("1");
-        post("1","sungsik is pool?");
+        //post("1","sungsik is pool?");
         //delete("1");
 
     }
@@ -30,38 +30,31 @@ public class MainActivity extends AppCompatActivity {
         mMessageService = ddDefaultRestClient.getClient(MessageService.class);
     }
 
-//    private void get(String id) {
-//
-//        Call<Message> call = mMessageService.getMessage("1");
-//        call.enqueue(new Callback<Message>() {
-//            @Override
-//            public void onResponse(Call<Message> call, Response<Message> response) {
-//                if (response.isSuccessful()) {
-//                    Log.d("jyp", "success");
-//                    Message test = response.body();
-//                    Log.d("jyp", test.getMessage());
-//                } else {
-//                    Log.d("jyp", "fail");
-//                    Log.d("jyp", response.errorBody().toString());
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Message> call, Throwable t) {
-//                Log.d("jyp", "fail2");
-//                t.printStackTrace();
-//            }
-//        });
-//
-//        Log.d("jyp", "init");
-//    }
-  private void post(String id,String message) {
+    Message mMessage;
 
+    private void getMessagePageDto(){
+        Call<Message> call = mMessageService.getMessagePageDto();
 
-        Log.d("jyp","init");
+        call.enqueue(new Callback<Message>() {
+            @Override
+            public void onResponse(Call<Message> call, Response<Message> response) {
+                if (response.isSuccessful()) {
+
+                } else {
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Message> call, Throwable t) {
+                Log.d("jyp", "get fail2");
+                t.printStackTrace();
+            }
+        });
+
+        Log.d("jyp","getMessagePageDto");
     }
 
-    Message mMessage;
     private void get(String id){
         Call<Message> call = mMessageService.getMessage(id);
 
