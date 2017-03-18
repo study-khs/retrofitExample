@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -19,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
 
         init();
 
+
+        getMessagePageDto();
         //get("1");
         //post("1","sungsik is pool?");
         //delete("1");
@@ -31,22 +35,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     Message mMessage;
+    MessageDto<Message> MessageDto;
 
     private void getMessagePageDto(){
-        Call<Message> call = mMessageService.getMessagePageDto();
+        Call<MessageDto> call = mMessageService.getMessagePageDto();
 
-        call.enqueue(new Callback<Message>() {
+        call.enqueue(new Callback<MessageDto>() {
             @Override
-            public void onResponse(Call<Message> call, Response<Message> response) {
+            public void onResponse(Call<MessageDto> call, Response<MessageDto> response) {
                 if (response.isSuccessful()) {
-
+                    Log.d("jyp", "getDto success");
+                    MessageDto = response.body();
+                    List<Message> messageList = MessageDto.getContent();
+                    Log.d("jyp", messageList.toString());
                 } else {
 
                 }
             }
 
             @Override
-            public void onFailure(Call<Message> call, Throwable t) {
+            public void onFailure(Call<MessageDto> call, Throwable t) {
                 Log.d("jyp", "get fail2");
                 t.printStackTrace();
             }

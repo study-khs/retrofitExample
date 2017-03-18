@@ -26,7 +26,7 @@ public interface MessageService {
     Call<Message> getMessage(@Path("message_id") String id);
 
     @GET("api/message")
-    Call<Message> getMessagePageDto();
+    Call<MessageDto> getMessagePageDto();
 
     @POST("api/message")
     Call<Message> postMessage(@Body Message message);
